@@ -20,7 +20,7 @@ import {
 import { useStateContext } from "../Context/ContextProvider";
 
 const Ecommerce = () => {
-  const {currentColor }= useStateContext()
+  const { currentColor } = useStateContext();
   return (
     <div className=" mt-12  ">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
@@ -32,7 +32,7 @@ const Ecommerce = () => {
             </div>
             <button
               type="button"
-              style={{ backgroundColor: {currentColor} }}
+              style={{ backgroundColor: currentColor }}
               className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
             >
               <BsCurrencyDollar />
@@ -127,7 +127,11 @@ const Ecommerce = () => {
               </div>
             </div>
             <div>
-              <Stacked currentMode={currentColor} width="320px" height="360px" />
+              <Stacked
+                currentMode={currentColor}
+                width="320px"
+                height="360px"
+              />
             </div>
           </div>
         </div>
