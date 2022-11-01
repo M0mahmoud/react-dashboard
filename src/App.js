@@ -10,15 +10,10 @@ import {
   Orders,
   Calendar,
   Employees,
-  Stacked,
-  Pyramid,
   Customers,
   Kanban,
-  Line,
   Area,
-  Bar,
   Pie,
-  Financial,
   ColorMapping,
   Editor,
 } from "./Pages";
@@ -51,7 +46,7 @@ function App() {
             </TooltipComponent>
           </div>
           {activeMenu ? (
-            <div className="w-72 fixed sildbar dark:bg-secondary-dark-bg bg-white">
+            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
               <Sidebar />
             </div>
           ) : (
@@ -69,10 +64,9 @@ function App() {
             </div>
             <div>
               {themeSettings && <ThemeSettings />}
-
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={<Ecommerce />}/>
+                <Route path="/" element={<Ecommerce />} />
                 <Route path="/ecommerce" element={<Ecommerce />} />
                 {/* pages  */}
                 <Route path="/orders" element={<Orders />} />
