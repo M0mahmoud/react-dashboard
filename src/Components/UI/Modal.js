@@ -5,7 +5,7 @@ import { useStateContext } from "../../Context/ContextProvider";
 const Backdrop = (props) => {
   return (
     <div
-      className="bg-half-transparent w-full h-screen fixed nav-item top-0 right-0"
+      className="bg-half-transparent w-full h-full fixed nav-item top-0 right-0"
       onClick={props.onClose}
     ></div>
   );
