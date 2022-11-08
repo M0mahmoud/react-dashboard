@@ -1,25 +1,30 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Footer, Navbar, Sidebar, ThemeSettings } from "./Components";
 import {
-  Ecommerce,
-  Orders,
-  Calendar,
-  Employees,
-  Customers,
-  Kanban,
-  Area,
-  Pie,
-  ColorMapping,
-  Editor,
-} from "./Pages";
+  Footer,
+  LoadingSpinner,
+  Navbar,
+  Sidebar,
+  ThemeSettings,
+} from "./Components";
 
 import "./App.css";
 import { useStateContext } from "./Context/ContextProvider";
+
+const Ecommerce = lazy(() => import("./Pages/Ecommerce"));
+const Orders = lazy(() => import("./Pages/Orders"));
+const Calendar = lazy(() => import("./Pages/Calendar"));
+const Employees = lazy(() => import("./Pages/Employees"));
+const Customers = lazy(() => import("./Pages/Customers"));
+const Kanban = lazy(() => import("./Pages/Kanban"));
+const Area = lazy(() => import("./Pages/Charts/Area"));
+const Pie = lazy(() => import("./Pages/Charts/Pie"));
+const ColorMapping = lazy(() => import("./Pages/Charts/ColorMapping"));
+const Editor = lazy(() => import("./Pages/Editor"));
 
 function App() {
   const {
@@ -66,23 +71,101 @@ function App() {
               {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={<Ecommerce />} />
-                <Route path="/ecommerce" element={<Ecommerce />} />
+                <Route
+                  path="/"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Ecommerce />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/ecommerce"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Ecommerce />
+                    </Suspense>
+                  }
+                />
                 {/* pages  */}
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/employees" element={<Employees />} />
-                <Route path="/customers" element={<Customers />} />
+                <Route
+                  path="/orders"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Orders />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/employees"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Employees />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/customers"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Customers />
+                    </Suspense>
+                  }
+                />
                 {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
+                <Route
+                  path="/kanban"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Kanban />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/editor"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Editor />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/calendar"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Calendar />
+                    </Suspense>
+                  }
+                />
                 {/* charts  */}
-                <Route path="/area" element={<Area />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
+                <Route
+                  path="/area"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Area />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/pie"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Pie />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/color-mapping"
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <ColorMapping />
+                    </Suspense>
+                  }
+                />
               </Routes>
             </div>
-            <Footer/>
+
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
